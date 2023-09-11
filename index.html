@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino Fun!!</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js'></script>
+  <style>
+    #sample {
+      width: 300px;
+      height: 300px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <head>
+    <h1>Communicating with Arduino from the Webpage!!!</h1>
+
+    <div id="sample"></div>
+
+    <script>
+      const socket = io();
+      const el = document.getElementById("sample");
+
+      socket.on("data", function(data) {
+        console.log(data);
+        el.style.opacity = data / 100;
+      })
+    </script>
+
+  </head>
+</body>
+</html>
